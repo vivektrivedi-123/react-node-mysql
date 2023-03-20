@@ -1,0 +1,59 @@
+version: '3'
+
+networks:
+  app-tier:
+    driver: bridge
+
+services:
+  database:
+    image: mysql:5.7
+    volumes:
+    - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    - ./data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: Shivam@up12
+      MYSQL_DATABASE: blog
+    ports:
+    - "3306:3306"
+    networks:
+      app-tier:
+
+  api:
+    depends_on:
+      - database
+    image: systango.azurecr.io/api:build_number
+    ports:
+    - "5000:5000"
+    environment:
+      DB_HOST: database
+      DB_USER: root
+      DB_PASSWORD: Shivam@up12
+      DB_NAME: blog
+      DB_PORT: 3306
+    networks:
+      app-tier:
+  
+  client:
+    depends_on:
+      - api
+    image: systango.azurecr.io/client:build_number
+    environment:
+      - REACT_APP_API_URL=http://api:5000/api
+    ports:
+    - "3000:3000"
+    - "3001:3001"
+    - "80:80"
+    networks:
+      app-tier:
+
+  phpmyadmin:
+    depends_on:
+      - database
+    image: phpmyadmin/phpmyadmin
+    environment:
+      PMA_HOST: database
+      MYSQL_ROOT_PASSWORD: Shivam@up12
+    ports:
+    - "90:80"
+    networks:
+      app-tier:

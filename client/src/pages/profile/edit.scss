@@ -1,0 +1,93 @@
+.e-profile{
+    .e-content{
+        padding: 60px 50px;
+        display: flex;
+        gap: 20px;
+        .b-content {
+          flex: 5;
+          display: flex;
+          flex-direction: column;
+          gap: 20px;
+          input {
+            padding: 10px;
+            border: 1px solid lightgray;
+            letter-spacing: 1.1px;
+            font-size: 15px;
+            font-family: 'Courier New', Courier, monospace;
+          }
+          textarea {
+              width: 100%;
+              border: 1px solid lightgray;
+              font-size: 15px;
+              letter-spacing: 1.1px;
+              padding: 10px;
+              font-family: 'Courier New', Courier, monospace;
+          }
+        }
+        .b-menu {
+          flex: 2;
+          display: flex;
+          flex-direction: column;
+          gap: 20px;
+          .item {
+            border: 1px solid lightblue;
+            padding: 10px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap:2rem;
+            img{
+                width: 170px;
+                height: 170px;
+                border-radius: 50%;
+                object-fit: cover;
+            }
+
+            .file {
+              cursor: pointer;
+              letter-spacing: 1px;
+              text-decoration: underline;
+              color: rgb(33, 132, 42);
+              transition: 0.3s ease;
+              &:hover {
+                transform: translateY(-2px);
+                color: rgb(90, 177, 177);
+              }
+            }
+            .buttons {
+              display: flex;
+              align-items: center;
+              column-gap: 2.4rem;
+              margin-top: 10px;
+              :first-child {
+                cursor: pointer;
+                color: teal;
+                background-color: #fff;
+                border: 1px solid teal;
+                padding: 4px 15px;
+                letter-spacing: 1px;
+                &:hover {
+                  background-color: teal;
+                  color: #fff;
+                  border: 1px solid #fff;
+                }
+              }
+              :last-child {
+                cursor: pointer;
+                color: rgba(14, 95, 187, 0.89);
+                background-color: #fff;
+                border: 1px solid tan;
+                padding: 4px 15px;
+                letter-spacing: 1px;
+                &:hover {
+                  background-color: rgba(14, 95, 187, 0.89);
+                  color: #fff;
+                  border: 1px solid #fff;
+                }
+              }
+            }
+          }
+        }
+    }
+}
