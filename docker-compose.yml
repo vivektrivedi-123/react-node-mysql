@@ -21,7 +21,9 @@ services:
   api:
     depends_on:
       - database
-    image: systango.azurecr.io/api:build_number
+    build:
+      context: ./api/
+      dockerfile: Dockerfile
     ports:
     - "5000:5000"
     environment:
@@ -36,24 +38,15 @@ services:
   client:
     depends_on:
       - api
-    image: systango.azurecr.io/client:build_number
+    build:
+      context: ./client/
+      dockerfile: Dockerfile
     environment:
       - REACT_APP_API_URL=http://api:5000/api
     ports:
     - "3000:3000"
     - "3001:3001"
-    - "80:80"
-    networks:
-      app-tier:
+    - "80:80" 
 
-  phpmyadmin:
-    depends_on:
-      - database
-    image: phpmyadmin/phpmyadmin
-    environment:
-      PMA_HOST: database
-      MYSQL_ROOT_PASSWORD: Shivam@up12
-    ports:
-    - "90:80"
     networks:
       app-tier:
