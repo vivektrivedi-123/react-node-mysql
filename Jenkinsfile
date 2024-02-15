@@ -2,9 +2,6 @@ pipeline{
     agent{
         label 'jenkins-server-node1'
     }
-    triggers {
-        pollSCM '* * * * *'
-    }
     options{
         timestamps()
         disableConcurrentBuilds()
