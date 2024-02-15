@@ -3,7 +3,7 @@ pipeline{
         label 'jenkins-server-node1'
     }
     triggers {
-        
+        githubPush()
     }
     options{
         timestamps()
