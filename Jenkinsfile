@@ -2,6 +2,9 @@ pipeline{
     agent{
         label 'jenkins-server-node1'
     }
+    triggers {
+        GenericTrigger causeString: 'Generic Cause', regexpFilterExpression: '', regexpFilterText: '', token: '91ffddc33d7', tokenCredentialId: ''
+    }
     options{
         timestamps()
         disableConcurrentBuilds()
