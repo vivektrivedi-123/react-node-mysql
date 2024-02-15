@@ -2,6 +2,9 @@ pipeline{
     agent{
         label 'jenkins-server-node1'
     }
+    triggers {
+        
+    }
     options{
         timestamps()
         disableConcurrentBuilds()
