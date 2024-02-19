@@ -2,4 +2,4 @@ this is testing file
 update some text
 latest tag
 Update some text
-test
+test update with latest tags
