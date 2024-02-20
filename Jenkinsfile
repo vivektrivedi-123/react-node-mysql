@@ -32,7 +32,6 @@ pipeline {
                         submoduleCfg: [],
                         userRemoteConfigs: [[
                             refspec: refspec,
-                            credentialsId: '<your credentials>',
                             url: url
                         ]]
                     ])
