@@ -13,16 +13,15 @@ pipeline {
         stage('Checkout') {
             steps {
                 script {
-                    def isPr() {
-                        env.CHANGE_ID != null
-                    }
+                    // Determine if it's a pull request
+                    def isPr = env.CHANGE_ID != null
                     
                     // github-specific refspec
                     def refspec = "+refs/pull/${env.CHANGE_ID}/head:refs/remotes/origin/PR-${env.CHANGE_ID} +refs/heads/master:refs/remotes/origin/master"
                     def url = 'https://github.com/vivektrivedi-123/react-node-mysql.git'
                     
                     def extensions = []
-                    if (isPr()) {
+                    if (isPr) {
                         extensions = [[$class: 'PreBuildMerge', options: [mergeRemote: "refs/remotes/origin", mergeTarget: "PR-${env.CHANGE_ID}"]]]
                     }
                     
