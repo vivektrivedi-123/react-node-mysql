@@ -1,4 +1,3 @@
-
 pipeline {
     agent {
         label 'jenkins-server-node1'
